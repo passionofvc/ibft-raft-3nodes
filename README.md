@@ -1,6 +1,9 @@
 # ibft-raft-3nodes
 quorum istanbul 3nodes set up
 
+the detail see https://github.com/ConsenSys/quorum-examples/tree/master/examples/7nodes
+
+
 ```
 #1 checkout
 git clone https://github.com/passionofvc/ibft-raft-3nodes.git
