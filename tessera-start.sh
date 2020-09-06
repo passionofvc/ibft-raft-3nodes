@@ -1,6 +1,6 @@
 #!/bin/bash
 # Start Tessera nodes.
-# This script will normally start up 7 nodes, however
+# This script will normally start up 3 nodes, however
 # if file qdata/numberOfNodes exists then the script will read number
 # of nodes from that file.
 
@@ -21,7 +21,7 @@ function usage() {
   echo "    however, this can be overridden by environment variable TESSERA_JAR or by the command line option."
   echo "  - This script will examine the file qdata/numberOfNodes to"
   echo "    determine how many nodes to start up. If the file doesn't"
-  echo "    exist then 7 nodes will be assumed"
+  echo "    exist then 3 nodes will be assumed"
   echo ""
   exit -1
 }

@@ -17,7 +17,7 @@ function usage() {
 }
 
 istanbulTools="false"
-numNodes=7
+numNodes=3
 while (( "$#" )); do
     case "$1" in
         --istanbulTools)

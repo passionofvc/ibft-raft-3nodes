@@ -31,7 +31,7 @@ function getPeerIPs() {
 }
 
 
-numNodes=7
+numNodes=3
 if [[ -f qdata/numberOfNodes ]]; then
     numNodes=`cat qdata/numberOfNodes`
 fi
