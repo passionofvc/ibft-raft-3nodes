@@ -1,4 +1,4 @@
-NUM_NODES=3
+NUM_NODES=1
 
 #get app,tools
 cd $NODE_HOME/app
@@ -24,8 +24,15 @@ cd $NODE_HOME
 key1=$( cat keys/key1 | jq -r .address)
 key2=$( cat keys/key2 | jq -r .address)
 
-sed -i '' "s/ed9d02e382b34818e88b88a309c7fe71e65f419d/$key1/g" start-permission.sh
-sed -i '' "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
+OS=$(uname -s)
+R=
+if [[ ${OS} == "Darwin" ]] ; then
+    R=" -i '' "
+elif  [[ ${OS} == "Linux" ]] ; then
+    R=" -i "
+fi
+sed $R "s/ed9d02e382b34818e88b88a309c7fe71e65f419d/$key1/g" start-permission.sh
+sed $R "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
 
 #start istanbul nodes
 bash start-permission.sh istanbul tessera --numNodes ${NUM_NODES} --istanbulTools
