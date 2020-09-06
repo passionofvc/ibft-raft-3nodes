@@ -162,7 +162,7 @@ deployContract(){
 }
 
 permissionInit(){
-   for i in {1.."${numNodes}"}
+   for i in `seq 1 $numNodes`
    do
         cp ./permission-config.json qdata/dd$i
    done
