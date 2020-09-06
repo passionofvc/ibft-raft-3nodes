@@ -162,7 +162,7 @@ deployContract(){
 }
 
 permissionInit(){
-   for i in {1..7}
+   for i in {1.."${numNodes}"}
    do
         cp ./permission-config.json qdata/dd$i
    done
@@ -213,7 +213,7 @@ getInputs(){
 privacyImpl=tessera
 tesseraOptions=
 consensus=raft
-numNodes=7
+numNodes=3
 blockPeriod=
 verbosity=3
 istanbulTools="false"
