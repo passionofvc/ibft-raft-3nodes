@@ -12,5 +12,6 @@ NODE_HOME=`pwd`; echo "export NODE_HOME=$NODE_HOME" >> ~/.bashrc
 
 #2 set up
 cd $NODE_HOME
+source ~/.bashrc
 bash set_up_istanbul_nodes.sh
 ```
