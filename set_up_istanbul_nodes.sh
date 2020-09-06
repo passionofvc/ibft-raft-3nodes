@@ -27,7 +27,7 @@ key2=$( cat keys/key2 | jq -r .address)
 OS=$(uname -s)
 R=
 if [[ ${OS} == "Darwin" ]] ; then
-    R=" -i '' "
+    R=" -i '.bak' "
 elif  [[ ${OS} == "Linux" ]] ; then
     R=" -i "
 fi
