@@ -1,4 +1,4 @@
-NUM_NODES=1
+NUM_NODES=3
 
 #get app,tools
 cd $NODE_HOME/app
