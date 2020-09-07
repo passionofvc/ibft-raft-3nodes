@@ -15,7 +15,7 @@ function usage() {
   echo ""
   echo "Note that this script will examine the file qdata/numberOfNodes to"
   echo "determine how many nodes to start up. If the file doesn't exist"
-  echo "then 7 nodes will be assumed"
+  echo "then ${numNodes} nodes will be assumed"
   echo ""
   ./tessera-start.sh --help
   exit -1
@@ -124,16 +124,20 @@ chk=`geth help | grep "allow-insecure-unlock" | wc -l`
 if (( $chk == 1 )); then
     allowSecureUnlock="--allow-insecure-unlock"
 fi
-ARGS="--nodiscover --nousb ${allowSecureUnlock} --verbosity ${verbosity} --networkid $NETWORK_ID --raft --raftblocktime ${blockTime} --rpc --rpccorsdomain=* --rpcvhosts=* --rpcaddr 0.0.0.0 --rpcapi admin,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft,quorumPermission --emitcheckpoints --unlock 0 --password passwords.txt $QUORUM_GETH_ARGS"
+ARGS="--nodiscover --nousb ${allowSecureUnlock} --verbosity ${verbosity} --networkid $NETWORK_ID --syncmode full --raft --raftblocktime ${blockTime} --rpc --rpccorsdomain=* --rpcvhosts=* --rpcaddr 0.0.0.0 --rpcapi admin,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft,quorumPermission --emitcheckpoints --unlock 0 --password passwords.txt $QUORUM_GETH_ARGS"
+
+WS=" --gcmode archive --ws --wsaddr 0.0.0.0 --wsorigins=* --wsport "
 
 basePort=21000
 baseRpcPort=22000
 baseRaftPort=50401
+baseWsPort=23000
 for i in `seq 1 ${numNodes}`
 do
     port=$(($basePort + ${i} - 1))
     rpcPort=$(($baseRpcPort + ${i} - 1))
     raftPort=$(($baseRaftPort + ${i} - 1))
+    wsPort=$(($baseWsPort + ${i} - 1))
     permissioned=
     if [[ $i -le 4 ]]; then
         permissioned="--permissioned"
@@ -141,13 +145,13 @@ do
         permissioned="--permissioned"
     fi
 
-    PRIVATE_CONFIG=qdata/c${i}/tm.ipc nohup geth --datadir qdata/dd${i} ${ARGS} ${permissioned} --raftport ${raftPort} --rpcport ${rpcPort} --port ${port} 2>>qdata/logs/${i}.log &
+    PRIVATE_CONFIG=qdata/c${i}/tm.ipc nohup geth --datadir qdata/dd${i} ${ARGS} ${permissioned} --raftport ${raftPort} --rpcport ${rpcPort} --port ${port} ${WS} ${wsPort} 2>>qdata/logs/${i}.log &
 done
 
 set +v
 
 echo
 echo "All nodes configured. See 'qdata/logs' for logs, and run e.g. 'geth attach qdata/dd1/geth.ipc' to attach to the first Geth node."
-echo "To test sending a private transaction from Node 1 to Node 7, run './runscript.sh private-contract.js'"
+echo "To test sending a private transaction from Node 1 to Node ${numNodes}, run './runscript.sh private-contract.js'"
 
 exit 0

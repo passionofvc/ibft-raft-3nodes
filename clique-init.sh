@@ -13,7 +13,7 @@ function usage() {
   exit -1
 }
 
-numNodes=7
+numNodes=3
 while (( "$#" )); do
     case "$1" in
         --numNodes)
@@ -70,7 +70,7 @@ do
     cp ${permNodesFile} qdata/dd${i}/permissioned-nodes.json
     cp keys/key${i} qdata/dd${i}/keystore
     cp raft/nodekey${i} qdata/dd${i}/geth/nodekey
-    geth --datadir qdata/dd${i} init $genesisFile
+    geth --nousb --datadir qdata/dd${i} init $genesisFile
 done
 
 #Initialise Tessera configuration

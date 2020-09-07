@@ -15,7 +15,7 @@ function usage() {
   echo ""
   echo "Note that this script will examine the file qdata/numberOfNodes to"
   echo "determine how many nodes to start up. If the file doesn't exist"
-  echo "then 3 nodes will be assumed"
+  echo "then ${numNodes} nodes will be assumed"
   echo ""
   ./tessera-start.sh --help
   exit -1
