@@ -25,3 +25,16 @@ source ~/.bashrc
 bash set_up_raft_nodes.sh
 ```
 
+#4 input Permissions info
+```
+---------------------------------------------------------------------
+Input Permissions Specific parameters
+---------------------------------------------------------------------
+Enter Network Admin Org Name: admin
+Enter Network Admin Role Name: admin
+Enter Org Admin Role Name: admin
+For Sub Orgs
+Enter Allowed Breadth [numeric]: 1
+Enter Allowed Depth [numeric]: 1
+---------------------------------------------------------------------
+```
