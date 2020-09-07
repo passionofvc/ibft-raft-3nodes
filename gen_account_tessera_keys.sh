@@ -2,6 +2,8 @@
 numNodes="$@"
 
 rm -rf $NODE_HOME/keys/key*
+rm -rf $NODE_HOME/keys/tm*
+
 for i in `seq 1 ${numNodes}`
 do
     geth account new --keystore $NODE_HOME/keys  --password <(cat $NODE_HOME/passwords.txt)
