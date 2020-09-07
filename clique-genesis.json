@@ -32,7 +32,7 @@
     "maxCodeSizeConfig" : [
       {
         "block" : 0,
-        "size" : 32
+        "size" : 128
       }
     ],
     "clique": {
