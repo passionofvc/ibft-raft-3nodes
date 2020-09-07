@@ -14,7 +14,7 @@ cd $NODE_HOME
 node update_genesis_account.js
 
 #gen nodekey
-bash gen_nodes_keys.sh
+bash gen_nodes_keys.sh ${NUM_NODES}
 
 #update extraData in genesis.json
 bash update_extra_validator.sh ${NUM_NODES}
