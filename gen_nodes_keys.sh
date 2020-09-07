@@ -1,7 +1,7 @@
 #
 numNodes="$@"
 
-rm -rf $NODE_HOME/raft/*
+rm -rf $NODE_HOME/raft/nodekey*
 for i in `seq 1 ${numNodes}`
 do
     openssl ecparam -genkey -name secp256k1 -out data.pem
