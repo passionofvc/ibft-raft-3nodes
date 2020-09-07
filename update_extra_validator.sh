@@ -12,6 +12,7 @@ do
         echo ','             >> ${NODE_HOME}/config.toml
     fi
 done;
+
 echo >> ${NODE_HOME}/config.toml
 echo ']'               >> ${NODE_HOME}/config.toml
 
