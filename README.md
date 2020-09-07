@@ -25,8 +25,8 @@ source ~/.bashrc
 bash set_up_raft_nodes.sh
 ```
 
-#4 input Permissions info
 ```
+#4 input Permissions info
 ---------------------------------------------------------------------
 Input Permissions Specific parameters
 ---------------------------------------------------------------------
