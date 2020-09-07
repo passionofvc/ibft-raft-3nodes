@@ -9,7 +9,7 @@ source ~/.bashrc
 cd $NODE_HOME
 bash gen_account_tessera_keys.sh ${NUM_NODES}
 
-#update genesis account
+#update genesis account alloc
 cd $NODE_HOME
 node update_genesis_account.js
 
@@ -18,6 +18,10 @@ bash gen_nodes_keys.sh
 
 #update extraData in genesis.json
 bash update_extra_validator.sh ${NUM_NODES}
+
+
+#create raft static.json
+bash create_raft_static_json.sh ${NUM_NODES}
 
 
 #update permission account
