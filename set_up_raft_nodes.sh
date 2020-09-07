@@ -32,6 +32,6 @@ fi
 sed $R "s/ed9d02e382b34818e88b88a309c7fe71e65f419d/$key1/g" start-permission.sh
 sed $R "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
 
-#start istanbul nodes
-bash start-permission.sh istanbul tessera --numNodes ${NUM_NODES} --istanbulTools
+#start raft nodes
+bash start-permission.sh raft tessera --numNodes ${NUM_NODES}
 
