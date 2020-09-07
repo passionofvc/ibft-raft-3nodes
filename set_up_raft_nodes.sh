@@ -1,4 +1,4 @@
-NUM_NODES=3
+NUM_NODES=1
 
 #get app,tools
 cd $NODE_HOME/app
@@ -30,7 +30,7 @@ fi
 OS=$(uname -s)
 R=
 if [[ ${OS} == "Darwin" ]] ; then
-    R=" -i '.bak' "
+    R=" -i.bak "
 elif  [[ ${OS} == "Linux" ]] ; then
     R=" -i "
 fi

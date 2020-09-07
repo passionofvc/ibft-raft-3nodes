@@ -30,7 +30,7 @@ fi
 OS=$(uname -s)
 R=
 if [[ ${OS} == "Darwin" ]] ; then
-    R=" -i '.bak' "
+    R=" -i.bak "
 elif  [[ ${OS} == "Linux" ]] ; then
     R=" -i "
 fi
