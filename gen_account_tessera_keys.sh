@@ -1,6 +1,8 @@
 #
 numNodes="$@"
 
+source ~/.bashrc
+
 rm -rf $NODE_HOME/keys/key*
 rm -rf $NODE_HOME/keys/tm*
 

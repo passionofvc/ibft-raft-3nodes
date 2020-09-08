@@ -4,7 +4,6 @@ NUM_NODES=3
 cd $NODE_HOME/app
 bash tessera-build.sh
 
-source ~/.bashrc
 #gen account keys, tessera keys
 cd $NODE_HOME
 bash gen_account_tessera_keys.sh ${NUM_NODES}
