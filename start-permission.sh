@@ -365,6 +365,7 @@ displayMsg "Restarting the network with permissions"
 # Bring down the network wait for all time wait connections to close
 ./stop.sh
 #waitPortClose
+sleep 5
 
 # Bring the netowrk back up
 if [ "$blockPeriod" == "" ]; then
