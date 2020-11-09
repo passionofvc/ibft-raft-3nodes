@@ -2,6 +2,7 @@ NUM_NODES=3
 
 #get app,tools
 cd $NODE_HOME/app
+bash istanbul-tools-build.sh
 bash tessera-build.sh
 
 #gen account keys, tessera keys
