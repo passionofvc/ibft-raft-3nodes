@@ -1,3 +1,15 @@
+###
+```
+前提条件
+geth/Quorum Version: 20.10.0
+go1.15.2
+solidity.0.5.3
+jq 
+wget
+nodejs
+jdk11以上
+```
+
 # ibft-raft-3nodes
 quorum istanbul 3nodes set up
 
