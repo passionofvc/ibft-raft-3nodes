@@ -148,7 +148,8 @@ createPermConfig(){
     echo -e "\t\"orgAdminRole\": \"$orgAdminRole\"," >> ./permission-config.json
     echo -e "\t\"accounts\": [\"0xed9d02e382b34818e88b88a309c7fe71e65f419d\", \"0xca843569e3427144cead5e4d5999a3d0ccf92b8e\"]," >> ./permission-config.json
     echo -e "\t\"subOrgBreadth\": $subOrgBreadth," >> ./permission-config.json
-    echo -e "\t\"subOrgDepth\": $subOrgDepth" >> ./permission-config.json
+    echo -e "\t\"subOrgDepth\": $subOrgDepth," >> ./permission-config.json
+    echo -e "\t\"permissionModel\": \"v2\"" >> ./permission-config.json
     echo -e "}" >> ./permission-config.json
 }
 
