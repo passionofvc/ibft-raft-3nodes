@@ -4,6 +4,7 @@ NUM_NODES=3
 cd $NODE_HOME/app
 bash istanbul-tools-build.sh
 bash tessera-build.sh
+bash get_solidity.0.5.3.sh
 
 source ~/.bashrc
 #gen account keys, tessera keys
