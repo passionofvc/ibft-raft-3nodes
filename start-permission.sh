@@ -61,9 +61,7 @@ buildFiles(){
 
     echo "Compiling $1.sol"
     #compile and generate solc output in abi
-    solc --bin --optimize --overwrite -o ./output ./perm-contracts/$1.sol
-    solc --abi --optimize --overwrite -o ./output ./perm-contracts/$1.sol
-
+    solc --bin --abi --optimize --overwrite -o ./output ./perm-contracts/${permissionModel}/$1.sol
     cd ./output
 
     deployFile="deploy-$contract.js"
@@ -135,6 +133,7 @@ EOF
 createPermConfig(){
     rm -f ./permission-config.json
     echo -e "{" >> ./permission-config.json
+    echo -e "\t\"permissionModel\": \"$permissionModel\"," >> ./permission-config.json
     echo -e "\t\"upgrdableAddress\": \"$upgr\"," >> ./permission-config.json
     echo -e "\t\"interfaceAddress\": \"$permInterface\"," >> ./permission-config.json
     echo -e "\t\"implAddress\": \"$permImpl\"," >> ./permission-config.json
@@ -148,8 +147,7 @@ createPermConfig(){
     echo -e "\t\"orgAdminRole\": \"$orgAdminRole\"," >> ./permission-config.json
     echo -e "\t\"accounts\": [\"0xed9d02e382b34818e88b88a309c7fe71e65f419d\", \"0xca843569e3427144cead5e4d5999a3d0ccf92b8e\"]," >> ./permission-config.json
     echo -e "\t\"subOrgBreadth\": $subOrgBreadth," >> ./permission-config.json
-    echo -e "\t\"subOrgDepth\": $subOrgDepth," >> ./permission-config.json
-    echo -e "\t\"permissionModel\": \"v2\"" >> ./permission-config.json
+    echo -e "\t\"subOrgDepth\": $subOrgDepth" >> ./permission-config.json
     echo -e "}" >> ./permission-config.json
 }
 
@@ -192,6 +190,12 @@ displayMsg(){
 
 getInputs(){
     blockPeriod=$1
+    read -p "Enter Permission model to use [v1/v2]: "  permissionModel
+    while [[ "$permissionModel" != "v1" && "$permissionModel" != "v2" ]];
+    do
+        echo "Invalid input for permissions model. Enter v1 or v2"
+        read -p "Enter Permission model to use [v1/v2]: "  permissionModel
+    done
     read -p "Enter Network Admin Org Name: "  nwAdminOrg
     read -p "Enter Network Admin Role Name: "  nwAdminRole
     read -p "Enter Org Admin Role Name: "  orgAdminRole
@@ -217,6 +221,7 @@ consensus=raft
 numNodes=3
 blockPeriod=
 verbosity=3
+permissionModel=
 istanbulTools="false"
 while (( "$#" )); do
     case "$1" in
@@ -292,7 +297,6 @@ fi
 
 ./stop.sh
 
-export STARTPERMISSION=1
 
 # check solc  & geth version if it is below 0.5.3 throw error
 displayMsg "Checking solidity and geth version compatibility"
@@ -311,6 +315,7 @@ fi
 # init the network
 displayMsg "Starting the network in $consensus mode"
 echo "Initializing the network"
+export STARTPERMISSION=1
 ./init.sh $consensus --numNodes $numNodes ${istanbulTools}
 
 echo "Starting the network"
