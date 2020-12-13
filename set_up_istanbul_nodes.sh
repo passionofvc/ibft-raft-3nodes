@@ -36,10 +36,10 @@ elif  [[ ${OS} == "Linux" ]] ; then
     R=" -i "
 fi
 
-sed $R "s/0xf86749905165e22326639191df5c27719b5f7fa0/$key1/g" start-permission.sh
+sed $R "s/f86749905165e22326639191df5c27719b5f7fa0/$key1/g" start-permission.sh
 diff start-permission.sh.bak start-permission.sh
 if [[ "${NUM_NODES}" -gt 1 ]]; then
-    sed $R "s/0xf44d866d7a5ef8f06dd8f2b2afa508304227ba86/$key2/g" start-permission.sh
+    sed $R "s/f44d866d7a5ef8f06dd8f2b2afa508304227ba86/$key2/g" start-permission.sh
     diff start-permission.sh.bak start-permission.sh
 fi
 
