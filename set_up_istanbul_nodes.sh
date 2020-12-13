@@ -44,9 +44,9 @@ if [[ "${NUM_NODES}" -gt 1 ]]; then
 fi
 
 pub_key=$( cat keys/tm1.pub )
-echo "TM_PUB_KEY=${TM_PUB_KEY}"
+echo "TM_PUB_KEY=${pub_key}"
 
-sed $R "s/TM_PUB_KEY/$pub_key/g" private-contract.js
+sed $R "s/TM_PUB_KEY/${pub_key}/g" private-contract.js
 diff private-contract.js.bak private-contract.js
 
 #start istanbul nodes
