@@ -37,18 +37,17 @@ elif  [[ ${OS} == "Linux" ]] ; then
 fi
 
 sed $R "s/ed9d02e382b34818e88b88a309c7fe71e65f419d/$key1/g" start-permission.sh
+diff start-permission.sh.bak start-permission.sh
 if [[ "${NUM_NODES}" -gt 1 ]]; then
     sed $R "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
+    diff start-permission.sh.bak start-permission.sh
 fi
-diff private-contract.js.bak private-contract.js
 
 pub_key=$( cat keys/tm1.pub )
 echo "TM_PUB_KEY=${TM_PUB_KEY}"
 
 sed $R "s/TM_PUB_KEY/$pub_key/g" private-contract.js
-
-diff start-permission.sh.bak start-permission.sh
-
+diff private-contract.js.bak private-contract.js
 
 #start istanbul nodes
 bash start-permission.sh istanbul tessera --numNodes ${NUM_NODES} --istanbulTools
