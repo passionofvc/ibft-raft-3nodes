@@ -92,6 +92,7 @@ do
         cp ${permNodesFile} qdata/dd${i}/permissioned-nodes.json
     fi
     cp keys/key${i} qdata/dd${i}/keystore
+    cat $genesisFile
     geth --nousb --datadir qdata/dd${i} init $genesisFile
 done
 
