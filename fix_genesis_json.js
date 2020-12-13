@@ -10,9 +10,14 @@ function updateGenesisFile(){
   Object.keys(data).forEach(function(key) {
     if (key === 'config') {
         console.log(key)
-        delete data[key]["maxCodeSize"]
         data[key]["petersburgBlock"] = 0;
         data[key]["istanbulBlock"] = 0;
+        let conf = data[key]
+        Object.keys(conf).forEach(function(key) {
+            if (key === "maxCodeSize") {
+                delete conf[key];
+            }
+        })
     }
   })
 
