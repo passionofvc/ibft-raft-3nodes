@@ -40,10 +40,14 @@ elif  [[ ${OS} == "Linux" ]] ; then
     R=" -i "
 fi
 
-sed $R "s/ed9d02e382b34818e88b88a309c7fe71e65f419d/$key1/g" start-permission.sh
+sed $R "s/0xf86749905165e22326639191df5c27719b5f7fa0/$key1/g" start-permission.sh
 if [[ "${NUM_NODES}" -gt 1 ]]; then
-   sed $R "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
+   sed $R "s/0xf44d866d7a5ef8f06dd8f2b2afa508304227ba86/$key2/g" start-permission.sh
 fi
+
+pub_key=$( cat keys/tm1.pub )
+echo "TM_PUB_KEY=${TM_PUB_KEY}"
+sed $R "s/TM_PUB_KEY/$pub_key/g" private-contract.js
 
 #start raft nodes
 bash start-permission.sh raft tessera --numNodes ${NUM_NODES}

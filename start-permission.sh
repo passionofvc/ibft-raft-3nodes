@@ -325,7 +325,7 @@ else
     ./start.sh $consensus $privacyImpl --verbosity ${verbosity} --blockPeriod ${blockPeriod}
 fi
 
-sleep 60
+sleep 15
 
 # create deployment files upgradable contract and deploy the contract
 displayMsg "Building permissions deployables"
@@ -364,14 +364,14 @@ displayMsg "Creating load script for upgradable contract and initializing"
 createLoadFile "PermissionsUpgradable" $upgr $permInterface $permImpl
 runInit
 echo "Network initialization completed"
-sleep 10
+sleep 30
 
 
 displayMsg "Restarting the network with permissions"
 # Bring down the network wait for all time wait connections to close
 ./stop.sh
 #waitPortClose
-sleep 5
+sleep 10
 
 # Bring the netowrk back up
 if [ "$blockPeriod" == "" ]; then
