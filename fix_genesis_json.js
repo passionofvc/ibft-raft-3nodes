@@ -20,11 +20,16 @@ function updateGenesisFile(){
     }
   })
 
+  Object.keys(data).forEach(function(key) {
+      if (key === "number" || key === "gasUsed") {
+          delete data[key];
+      }
+      data["timestamp"] = "0x00";
+  })
   console.log(JSON.stringify(data));
   //write to genesis.json
   fs.writeFile(genesis_file, JSON.stringify(data,null,2), function writeJSON(err) {
       if (err) return console.log(err);
-      //console.log(JSON.stringify(data));
       console.log('writing to ' + genesis_file);
   });
 
