@@ -381,5 +381,5 @@ else
 fi
 
 #clean up all temporary directories
-rm -rf ./output deploy-*.js
-rm permission-config.json
+#rm -rf ./output deploy-*.js
+#rm permission-config.json
