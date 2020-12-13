@@ -14,6 +14,9 @@ function updateGenesisFile(){
             if (key === "maxCodeSize") {
                 delete conf[key];
             }
+            if (key === "txnSizeLimit") {
+                delete conf[key];
+            }
             conf["petersburgBlock"] = 0;
             conf["istanbulBlock"] = 0;
         })
