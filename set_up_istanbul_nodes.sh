@@ -41,6 +41,8 @@ if [[ "${NUM_NODES}" -gt 1 ]]; then
     sed $R "s/ca843569e3427144cead5e4d5999a3d0ccf92b8e/$key2/g" start-permission.sh
 fi
 
+pub_key=$( cat keys/tm1.pub )
+sed $R "s/TM_PUB_KEY/$pub_key/g" private-contract.js
 
 #start istanbul nodes
 bash start-permission.sh istanbul tessera --numNodes ${NUM_NODES} --istanbulTools
