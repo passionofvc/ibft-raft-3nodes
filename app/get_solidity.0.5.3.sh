@@ -9,8 +9,8 @@
 OS=$(uname -s)
 SOLIDITY_DIR=
 if [[ ${OS} == "Darwin" ]] ; then
-    SOLIDITY_DIR="$PWD/solidity.0.5.3/mac"
+    SOLIDITY_DIR="\$NODE_HOME/app/solidity.0.5.3/mac"
 elif  [[ ${OS} == "Linux" ]] ; then
-    SOLIDITY_DIR="$PWD/solidity.0.5.3/linux"
+    SOLIDITY_DIR="\$NODE_HOME/app/solidity.0.5.3/linux"
 fi
 echo "export PATH=$SOLIDITY_DIR:\$PATH" >> ~/.bashrc
