@@ -20,6 +20,8 @@ cd $NODE_HOME
 node update_genesis_account.js
 
 
+node fix_genesis_json.js
+
 #update permission account
 cd $NODE_HOME
 key1=$( cat keys/key1 | jq -r .address)
