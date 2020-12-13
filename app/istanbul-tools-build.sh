@@ -14,5 +14,5 @@ elif  [[ ${OS} == "Linux" ]] ; then
     ISTANBUL_DIR="\$NODE_HOME/app/istanbul-tools/linux/build/bin"
 fi
 
-echo 'export PATH=$ISTANBUL_DIR:$PATH' >> ~/.bashrc
+echo "export PATH=$ISTANBUL_DIR:\$PATH" >> ~/.bashrc
 
