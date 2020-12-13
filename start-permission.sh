@@ -78,7 +78,7 @@ buildFiles(){
     echo -e "var simpleContract = web3.eth.contract(abi);">> ./$deployFile
     if [ "$data" == "NONE" ]
     then
-        echo -e "var a = simpleContract.new(\"0x9295633e86e7dd31a149e43bcb9bb0b62b8b5b81\",{from:web3.eth.accounts[0], data: bytecode, gas: 9200000}, function(e, contract) {">> ./$deployFile
+        echo -e "var a = simpleContract.new(\"0xf86749905165e22326639191df5c27719b5f7fa0\",{from:web3.eth.accounts[0], data: bytecode, gas: 9200000}, function(e, contract) {">> ./$deployFile
     elif [ "$data" == "IMPL" ]
     then
         echo -e "var a = simpleContract.new(\"$upgr\", \"$org\", \"$roles\", \"$accounts\", \"$voter\", \"$nodes\", {from:web3.eth.accounts[0], data: bytecode, gas: 9200000}, function(e, contract) {">> ./$deployFile
@@ -145,7 +145,7 @@ createPermConfig(){
     echo -e "\t\"nwAdminOrg\": \"$nwAdminOrg\"," >> ./permission-config.json
     echo -e "\t\"nwAdminRole\": \"$nwAdminRole\"," >> ./permission-config.json
     echo -e "\t\"orgAdminRole\": \"$orgAdminRole\"," >> ./permission-config.json
-    echo -e "\t\"accounts\": [\"0x9295633e86e7dd31a149e43bcb9bb0b62b8b5b81\", \"0xb6bf72357edb9cb9fdbbf4ec3d2e51920f3fab43\"]," >> ./permission-config.json
+    echo -e "\t\"accounts\": [\"0xf86749905165e22326639191df5c27719b5f7fa0\", \"0xf44d866d7a5ef8f06dd8f2b2afa508304227ba86\"]," >> ./permission-config.json
     echo -e "\t\"subOrgBreadth\": $subOrgBreadth," >> ./permission-config.json
     echo -e "\t\"subOrgDepth\": $subOrgDepth" >> ./permission-config.json
     echo -e "}" >> ./permission-config.json
