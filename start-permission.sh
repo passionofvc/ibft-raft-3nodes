@@ -59,7 +59,7 @@ buildFiles(){
     contract=$1
     data=$2
 
-    echo "Compiling $1.sol"
+    echo "Compiling $1.sol data=$2"
     #compile and generate solc output in abi
     solc --bin --abi --optimize --overwrite -o ./output ./perm-contracts/${permissionModel}/$1.sol
     cd ./output
