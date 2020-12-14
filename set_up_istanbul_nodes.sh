@@ -35,7 +35,7 @@ R=
 if [[ ${OS} == "Darwin" ]] ; then
     R=" -i.bak "
 elif  [[ ${OS} == "Linux" ]] ; then
-    R=" -i "
+    R=" -i\".bak\" "
 fi
 
 sed $R "s/f86749905165e22326639191df5c27719b5f7fa0/$key1/g" start-permission.sh
