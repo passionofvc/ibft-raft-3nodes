@@ -107,7 +107,7 @@ do
     #Only set heap size if not specified on command line
     MEMORY=
     if [[ ! "$jvmParams" =~ "Xm" ]]; then
-      MEMORY="-Xms128M -Xmx128M"
+      MEMORY="-Xms512M -Xmx512M"
     fi
 
     CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config$TESSERA_CONFIG_TYPE$i.json"
