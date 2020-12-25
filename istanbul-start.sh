@@ -125,7 +125,7 @@ if (( $chk == 1 )); then
     allowSecureUnlock="--allow-insecure-unlock"
 fi
 
-ARGS="--nodiscover --nousb ${allowSecureUnlock} --verbosity ${verbosity} --istanbul.blockperiod ${blockPeriod} --istanbul.requesttimeout $((${blockPeriod}*1000 + 5000)) --networkid $NETWORK_ID --syncmode full --mine --minerthreads 1 --rpc --rpccorsdomain=* --rpcvhosts=* --rpcaddr 0.0.0.0 --rpcapi admin,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul,quorumPermission,quorumExtension --unlock 0 --password passwords.txt $QUORUM_GETH_ARGS"
+ARGS="--txpool.globalslots 20000 --txpool.globalqueue 20000 --nodiscover --nousb ${allowSecureUnlock} --verbosity ${verbosity} --istanbul.blockperiod ${blockPeriod} --istanbul.requesttimeout $((${blockPeriod}*1000 + 5000)) --networkid $NETWORK_ID --syncmode full --mine --minerthreads 4 --miner.gaslimit 800000000000 --miner.gastarget 800000000000 --rpc --rpccorsdomain=* --rpcvhosts=* --rpcaddr 0.0.0.0 --rpcapi admin,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul,quorumPermission,quorumExtension --unlock 0 --password passwords.txt $QUORUM_GETH_ARGS"
 
 WS=" --gcmode archive --ws --wsaddr 0.0.0.0 --wsorigins=* --wsport "
 
